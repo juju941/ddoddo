@@ -1,31 +1,20 @@
-import asyncio
 import discord
+from discord.ext import commands
+import os
 
-client = discord.Client()
+client = commands.Bot(command_prefix = '-')
 
-# 복사해 둔 토큰을 your_token에 넣어줍니당
-token = "NzkzMDc3NzY0NzA5NDE3MDEx.GE0ckE.2a1aXMthCNcCgxgFL8q2NBC5OnxUQEOFMzRnSY"
+await client.change_presence(status=discord.Status.online)  # 온라인
+# await client.change_presence(status=discord.Status.idle) #자리비움
+# await client.change_presence(status=discord.Status.dnd) #다른용무
+# await client.change_presence(status=discord.Status.offline) #오프라인
 
+await client.change_presence(activity=discord.Game(name="게임 하는중"))
+# await client.change_presence(activity=discord.Streaming(name="스트림 방송중", url='링크'))
+# await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="노래 듣는중"))
+# await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="영상 시청중"))
 
-# 봇이 구동되었을 때 동작되는 코드
-@client.event
-async def on_ready():
-    print("로그인 된 봇:")  # 화면에 봇의 아이디, 닉네임이 출력되는 코드
-    print(client.user.name)
-    print(client.user.id)
-    print("===========")
-
-
-@client.event
-async def on_ready():
-    await client.change_presence(status=discord.Status.online)
-    game = discord.Game("시작하는 중...")
-    await client.change_presence(status=discord.Status.online, activity=game)
-    while True:
-        game = discord.Game("난 뚜뚜야!!")
-        await client.change_presence(status=discord.Status.online, activity=game)
-        await asyncio.sleep(3)
-
+print("봇 이름:", client.user.name, "봇 아이디:", client.user.id, "봇 버전:", discord.__version__)
 
 # 디스코드에는 현재 본인이 어떤 게임을 플레이하는지 보여주는 기능이 있습니다.
 # 이 기능을 사용하여 봇의 상태를 간단하게 출력해줄 수 있습니다.
@@ -103,4 +92,4 @@ async def on_message(message):
             return None
 
 
-client.run(token)
+client.run(os.environ['token'])
