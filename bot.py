@@ -1,5 +1,5 @@
-import asyncio
 import discord
+import asyncio
 
 client = discord.Client()
 
@@ -86,24 +86,4 @@ async def on_message(message):
     async def _clear(ctx, *, amount=5):
         await ctx.channel.purge(limit=amount)
 
-    # 서버에 멤버가 들어왔을 때 수행 될 이벤트
-    async def on_member_join(self, member):
-        channel = client.get_channel(808342847748440084)
-        msg = "<@{}>님이 서버에 들어오셨어요. 환영합니다.".format(str(member.id))
-        await find_first_channel(member.guild.text_channels).send(msg)
-        return None
-
-    # 사버에 멤버가 나갔을 때 수행 될 이벤트
-    async def on_member_remove(self, member):
-        channel = client.get_channel(808342847748440084)
-        msg = "<@{}>님이 서버에서 나가거나 추방되었습니다.".format(str(member.id))
-        await find_first_channel(member.guild.text_channels).send(msg)
-        return None
-
-    # 봇에 메시지가 오면 수행 될 액+션
-    async def on_message(self, message):
-        if message.author.bot:
-            return None
-
-
-bot.run(token)
+client.run(token)
