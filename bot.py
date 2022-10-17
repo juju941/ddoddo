@@ -1,6 +1,5 @@
-import discord, asyncio, os
-import json
-from discord.ext import commands
+import asyncio
+import discord
 
 client = discord.Client()
 
