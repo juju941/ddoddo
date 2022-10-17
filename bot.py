@@ -1,107 +1,34 @@
-import discord, asyncio, os
-import json
-from discord.ext import commands
+import discord
 
-client = discord.Client()
+#  파일 r 모드로 열기
+f = open('token.txt', 'r')
 
-# 복사해 둔 토큰을 your_token에 넣어줍니당
-token = "NzkzMDc3NzY0NzA5NDE3MDEx.GE0ckE.2a1aXMthCNcCgxgFL8q2NBC5OnxUQEOFMzRnSY"
-
-
-# 봇이 구동되었을 때 동작되는 코드
-@client.event
-async def on_ready():
-    print("로그인 된 봇:")  # 화면에 봇의 아이디, 닉네임이 출력되는 코드
-    print(client.user.name)
-    print(client.user.id)
-    print("===========")
+# readline() 함수 이용해서 한 라인씩 읽어오기
+token = f.readline()
+# print(token)
 
 
-@client.event
-async def on_ready():
-    await client.change_presence(status=discord.Status.online)
-    game = discord.Game("시작하는 중...")
-    await client.change_presence(status=discord.Status.online, activity=game)
-    while True:
-        game = discord.Game("난 뚜뚜야!!")
-        await client.change_presence(status=discord.Status.online, activity=game)
-        await asyncio.sleep(3)
+intents = discord.Intents.default()
+bot = discord.Client(intents=intents)
 
 
-# 디스코드에는 현재 본인이 어떤 게임을 플레이하는지 보여주는 기능이 있습니다.
-# 이 기능을 사용하여 봇의 상태를 간단하게 출력해줄 수 있습니다.
+@bot.event
+async def on_ready():  # 봇 실행 시 실행되는 함수
+    print(f'{bot.user} 에 로그인하였습니다!')
 
 
-# 봇이 새로운 메시지를 수신했을때 동작되는 코드입니다.
-@client.event
-async def on_message(message):
-    if message.author.bot:  # 만약 메시지를 보낸사람이 봇일 경우에는
-        return None  # 동작하지 않고 무시합니다.
+@bot.event
+async def on_message(message):  # 채팅창에 메시지 입력시 실행되는 함수
+    # 입력되는 메시지가
+    # !hello 이면 안녕하세요라고 반응하고
+    # !bye가 입력되는 잘가요라고 반응합니다.
 
-    id = message.author.id  # id라는 변수에는 메시지를 보낸사람의 ID를 담습니다.
-    channel = message.channel  # channel이라는 변수에는 메시지를 받은 채널의 ID를 담습니다.
+    if message.content.startswith('!hello'):
+        await message.channel.send('안녕하세요!')
 
-    if message.content == "!명령어":
-        embed = discord.Embed(title="!명령어", description="아래의 명령어를 입력해보세요", color=0xff0000)
-        embed.add_field(name="!행운", value="행운을 올려보세요", inline=False)
-        embed.add_field(name="!가이드북", value="가이드북 주소를 올려드려요", inline=False)
-        embed.add_field(name="!패치파일", value="두번째 패치파일 주소를 올려드려요", inline=False)
-        embed.add_field(name="!천사날개 조합식", value="천사날개 조합식을 알려드려요", inline=False)
-        embed.add_field(name="!알파윙 조합식", value="알파 윙 조합식을 알려드려요", inline=False)
-        embed.add_field(name="!진알파 조합식", value="眞-알파 윙 조합식을 알려드려요", inline=False)
-        embed.add_field(name="!케루빔 조합식", value="케루빔의 수호 날개 조합식을 알려드려요", inline=False)
-        await message.channel.send(embed=embed)
-
-    if message.content.startswith('!행운'):
-        channel = message.channel
-        await channel.send('오늘은 좋은걸 얻을거 같은 기분이예요!!')
-
-    if message.content.startswith('!가이드북'):
-        channel = message.channel
-        await channel.send("https://cafe.naver.com/twguide/2?boardType=L")
-
-    if message.content.startswith('!패치파일'):
-       channel = message.channel
-       await channel.send("https://drive.google.com/file/d/1eq2UkT6M_-imjFikJ6RRP72XFUy3kw5n/view?usp=sharing")
-
-    if message.content.startswith('!알파윙 조합식'):
-        channel = message.channel
-        await channel.send("리틀 그레스 윙 3합\n에메랄드 20개\n천공의 깃털 20개")
-
-    if message.content.startswith('!천사날개 조합식'):
-        channel = message.channel
-        await channel.send("리틀 플라티나 윙 3합\n에메랄드 20개\n천공의 깃털 20개")
-
-    if message.content.startswith('!진알파 조합식'):
-        channel = message.channel
-        await channel.send("알파 윙 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개")
-
-    if message.content.startswith('!케루빔 조합식'):
-         channel = message.channel
-         await channel.send("천사날개 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개")
-
-    @app.command(name="청소", pass_context=True)
-    async def _clear(ctx, *, amount=5):
-        await ctx.channel.purge(limit=amount)
-
-    # 서버에 멤버가 들어왔을 때 수행 될 이벤트
-    async def on_member_join(self, member):
-        channel = client.get_channel(808342847748440084)
-        msg = "<@{}>님이 서버에 들어오셨어요. 환영합니다.".format(str(member.id))
-        await find_first_channel(member.guild.text_channels).send(msg)
-        return None
-
-    # 사버에 멤버가 나갔을 때 수행 될 이벤트
-    async def on_member_remove(self, member):
-        channel = client.get_channel(808342847748440084)
-        msg = "<@{}>님이 서버에서 나가거나 추방되었습니다.".format(str(member.id))
-        await find_first_channel(member.guild.text_channels).send(msg)
-        return None
-
-    # 봇에 메시지가 오면 수행 될 액+션
-    async def on_message(self, message):
-        if message.author.bot:
-            return None
+    if message.content.startswith('!bye'):
+        await message.reply('잘가요!')
 
 
-client.run(token)
+# 봇 실행
+bot.run(token)
