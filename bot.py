@@ -87,4 +87,4 @@ async def on_message(message):
     async def _clear(ctx, *, amount=5):
         await ctx.channel.purge(limit=amount)
 
-client.run(token)
+bot.run(token)
