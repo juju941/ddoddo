@@ -20,4 +20,4 @@ async def hello(ctx):
 async def bye(ctx):
   await ctx.reply('See you later!')
 
-bot.run("NzkzMDc3NzY0NzA5NDE3MDEx.GE0ckE.2a1aXMthCNcCgxgFL8q2NBC5OnxUQEOFMzRnSY")
+bot.run("NzkzMDc3NzY0NzA5NDE3MDEx.Gld2uh.LsfytlBDRSQVfgXvl4ZbJqBF0WKszW0uLOMznk")
