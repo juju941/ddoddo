@@ -27,10 +27,6 @@ async def on_ready():
         await client.change_presence(status=discord.Status.online, activity=game)
         await asyncio.sleep(3)
 
-
-intents=discord.Intents.default()
-bot = discord.Client(intents=intents)
-
 # 디스코드에는 현재 본인이 어떤 게임을 플레이하는지 보여주는 기능이 있습니다.
 # 이 기능을 사용하여 봇의 상태를 간단하게 출력해줄 수 있습니다.
 
