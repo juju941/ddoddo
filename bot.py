@@ -1,14 +1,15 @@
 import discord
 import asyncio
+from discord.ext import commands
 
-client = discord.Client()
+bot = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 
 # 복사해 둔 토큰을 your_token에 넣어줍니당
 token = "NzkzMDc3NzY0NzA5NDE3MDEx.GE0ckE.2a1aXMthCNcCgxgFL8q2NBC5OnxUQEOFMzRnSY"
 
 
 # 봇이 구동되었을 때 동작되는 코드
-@client.event
+@bot.event
 async def on_ready():
     print("로그인 된 봇:")  # 화면에 봇의 아이디, 닉네임이 출력되는 코드
     print(client.user.name)
@@ -16,7 +17,7 @@ async def on_ready():
     print("===========")
 
 
-@client.event
+@bot.event
 async def on_ready():
     await client.change_presence(status=discord.Status.online)
     game = discord.Game("시작하는 중...")
@@ -35,7 +36,7 @@ bot = discord.Client(intents=intents)
 
 
 # 봇이 새로운 메시지를 수신했을때 동작되는 코드입니다.
-@client.event
+@bot.event
 async def on_message(message):
     if message.author.bot:  # 만약 메시지를 보낸사람이 봇일 경우에는
         return None  # 동작하지 않고 무시합니다.
