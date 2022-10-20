@@ -1,6 +1,8 @@
 import discord
 import asyncio
 
+client = discord.Client()
+
 # 복사해 둔 토큰을 your_token에 넣어줍니당
 token = "NzkzMDc3NzY0NzA5NDE3MDEx.GE0ckE.2a1aXMthCNcCgxgFL8q2NBC5OnxUQEOFMzRnSY"
 
