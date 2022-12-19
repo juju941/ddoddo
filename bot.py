@@ -5,6 +5,9 @@ from keep_alive import keep_alive
 
 intents = discord.Intents.all()
 
+PREFIX = os.environ["PREFIX"]
+TOKEN = os.environ["TOKEN"]
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 client = discord.Client(intents=intents)
 
@@ -90,4 +93,4 @@ async def on_message(message):
          await channel.send("```천사날개 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개```")
       
 keep_alive()
-client.run('MTA1NDI5NzIyMDQwNjU3NTEwNA.GzBTp7.8gP3FChn-VS8rHuQkD_IPDgV_ypt2FMe7EBHbk')
+client.run('token')
