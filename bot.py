@@ -4,7 +4,7 @@ import os
 from discord.ext import commands
 
 TOKEN = os.environ['TOKEN']
-FREFIX = os.environ['FREFIX']
+PREFIX = os.environ['PREFIX']
 
 intents = discord.Intents.all()
 
