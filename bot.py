@@ -88,4 +88,4 @@ async def on_message(message):
          channel = message.channel
          await channel.send("```천사날개 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개```")
       
-client.run('MTA1NDI5NzIyMDQwNjU3NTEwNA.GzBTp7.8gP3FChn-VS8rHuQkD_IPDgV_ypt2FMe7EBHbk')
+client.run('MTA1NDI5NzIyMDQwNjU3NTEwNA.G6fX7A.Ff0sgfUdCquNqQ0L2eYHhAk_y2zfUb-4yTAQt8')
