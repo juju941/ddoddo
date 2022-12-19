@@ -1,14 +1,7 @@
 import discord
 import asyncio
-import os
 from discord.ext import commands
-from distuils.sysconfig import PREFIX
-from dotenv import load_dotenv
-
-load_dotenv()
-
-TOKEN = os.environ['TOKEN']
-PREFIX = os.environ['PREFIX']
+from keep_alive import keep_alive
 
 intents = discord.Intents.all()
 
@@ -96,4 +89,5 @@ async def on_message(message):
          channel = message.channel
          await channel.send("```천사날개 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개```")
       
-client.run(os.getenv('TOKEN'))
+keep_alive()
+client.run('MTA1NDI5NzIyMDQwNjU3NTEwNA.GzBTp7.8gP3FChn-VS8rHuQkD_IPDgV_ypt2FMe7EBHbk')
