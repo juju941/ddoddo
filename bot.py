@@ -4,9 +4,6 @@ from discord.ext import commands
 
 intents = discord.Intents.all()
 
-PREFIX = os.environ["PREFIX"]
-TOKEN = os.environ["TOKEN"]
-
 bot = commands.Bot(command_prefix="!", intents=intents)
 client = discord.Client(intents=intents)
 
@@ -91,4 +88,4 @@ async def on_message(message):
          channel = message.channel
          await channel.send("```천사날개 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개```")
       
-client.run('token')
+client.run('TOKEN')
