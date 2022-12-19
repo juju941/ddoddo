@@ -2,7 +2,8 @@ import discord
 import asyncio
 from discord.ext import commands
 
-TOKEN = 'MTA1NDI5NzIyMDQwNjU3NTEwNA.G6fX7A.Ff0sgfUdCquNqQ0L2eYHhAk_y2zfUb-4yTAQt8'
+TOKEN = os.environ['TOKEN']
+FREFIX = os.environ['FREFIX']
 
 intents = discord.Intents.all()
 
