@@ -1,7 +1,6 @@
 import discord
 import asyncio
 from discord.ext import commands
-from keep_alive import keep_alive
 
 intents = discord.Intents.all()
 
@@ -92,5 +91,4 @@ async def on_message(message):
          channel = message.channel
          await channel.send("```천사날개 3합 1개\n흑해진보 40개\n쿠로이 깃털 1개```")
       
-keep_alive()
 client.run('token')
